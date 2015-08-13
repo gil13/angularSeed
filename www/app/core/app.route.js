@@ -2,15 +2,16 @@
     'use strict';
 
     angular
-        .module('seed', [])
-        .config(function($stateProvider, $urlRouterProvider) {
-            $urlRouterProvider.otherwise('/app/main');
+        .module('seed', ['ui.router'])
+        .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+
+            $urlRouterProvider.otherwise('/main');
 
             $stateProvider
-                .state('main', {
+                .state('/', {
                     url:'/main',
                     templateUrl: 'app/main/main.html'
                     // controller: 'HomeController'
                 });
-        });
+        }]);
 })();

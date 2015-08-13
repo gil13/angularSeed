@@ -2,6 +2,6 @@
     'use strict';
 
     angular
-        .module('seed', ['ui.router','restangular']);
+        .module('seed',['restangular', 'ui.router']);
 
 })();

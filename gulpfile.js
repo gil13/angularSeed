@@ -6,8 +6,6 @@ var sass = require('gulp-sass'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
-    gutil = require('gulp-util'),
-    minifyCss = require('gulp-minify-css'),
     livereload = require('gulp-livereload'),
     connect = require('gulp-connect'),
     eslint = require('gulp-eslint'),
@@ -20,6 +18,17 @@ var sass = require('gulp-sass'),
 var development = environments.development;
 var production = environments.production;
 
+var vendors = [
+    'node_modules/angular/angular.min.js',
+    'node_modules/angular-ui-router/build/angular-ui-router.min.js',
+    'node_modules/restangular/dist/restangular.min.js',
+    'node_modules/underscore/underscore-min.js'
+];
+
+var css = [
+    'www/assets/css/main.css'
+];
+
 // Webserver
 gulp.task('webserver', function() {
     connect.server({
@@ -28,21 +37,31 @@ gulp.task('webserver', function() {
     });
 });
 
-gulp.task('replace', ['cleanDist'], function() {
+gulp.task('replace', ['cleanDist', 'vendors', 'coreJs' ,'featureJs', 'templateHtml'], function() {
     gulp.src('www/index.html')
         .pipe(development(htmlreplace({
-            // 'css': 'styles.min.css',
-            'core': 'js/core/core.js',
-            'js': 'js/feature/feature.js',
-            'vendors': 'js/vendors/vendors.js'
+            'css': 'assets/css/main.css',
+            'core': 'app/core/core.js',
+            'vendors': 'js/vendors/vendors.min.js'
         }))
         .pipe(production(htmlreplace({
-            // 'css': 'styles.min.css',
-            'core': 'js/core/core.min.js',
-            'js': 'js/feature/feature.min.js',
+            'css': 'assets/css/main.css',
+            'core': 'app/core/core.min.js',
+            'js': 'app/feature/feature.min.js',
             'vendors': 'js/vendors/vendors.min.js'
         }))))
         .pipe(gulp.dest('dist/'));
+});
+
+// Copy HTML templates
+gulp.task('templateHtml', ['cleanDist'], function() {
+    gulp.src('www/app/**/*.html')
+        .pipe(gulp.dest('dist/app'));
+});
+
+gulp.task('css', ['cleanDist'], function() {
+    gulp.src(css)
+        .pipe(gulp.dest('dist/assets/css'));
 });
 
 // Compile Our Sass
@@ -59,27 +78,26 @@ gulp.task('coreJs', ['cleanDist'], function() {
         .pipe(concat('core.js'))
         .pipe(production(rename('core.min.js')))
         .pipe(production(uglify()))
-        .pipe(gulp.dest('dist/js/core'))
+        .pipe(gulp.dest('dist/app/core'))
         .pipe(livereload());
 });
 
 // Concatenate featureJs
 gulp.task('featureJs', ['cleanDist'], function() {
     return gulp.src(['www/app/**/*.js', '!www/app/core/*.js'])
-        .pipe(concat('feature.js'))
+        .pipe(production(concat('feature.js')))
         .pipe(production(rename('feature.min.js')))
         .pipe(production(uglify()))
-        .pipe(gulp.dest('dist/js/feature'))
+        .pipe(gulp.dest('dist/app'))
+        .pipe(production(gulp.dest('dist/app/feature/')))
         .pipe(livereload());
 });
 
 // Concatenate vendors
 gulp.task('vendors', ['cleanDist'], function() {
-    return gulp.src(['node_modules/angular/angular.min.js', 'node_modules/angular-ui-router/build/angular-ui-router.min.js'])
-        .pipe(concat('vendors.js'))
-        .pipe(production(rename('vendors.min.js')))
-        .pipe(production(uglify()))
-        .pipe(gulp.dest('dist/js/vendors'))
+    return gulp.src(vendors)
+        .pipe(concat('vendors.min.js'))
+        .pipe(gulp.dest('dist/js/vendors/'))
         .pipe(livereload());
 });
 
@@ -103,9 +121,7 @@ gulp.task('lint', function () {
         .pipe(eslint.failOnError());
 });
 
-// Default Task
+// Task
 gulp.task('linter', ['lint']);
-
 gulp.task('serve', ['webserver']);
-
-gulp.task('build', ['webserver', 'lint', 'cleanDist', 'coreJs', 'featureJs', 'vendors', 'replace', 'watch']);
+gulp.task('build', ['webserver', 'cleanDist', 'css', 'vendors', 'coreJs', 'featureJs', 'templateHtml', 'replace']);
