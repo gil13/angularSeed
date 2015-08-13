@@ -1,6 +1,4 @@
-
 # AngularJs - Seed
-==================
 
 Updated: 2015-08-13
 
@@ -25,7 +23,7 @@ Updated: 2015-08-13
     * friendlyFormatter: Give a friendly output for eslint report
 
     * Tasks
-    
+
     * webserver: Set up a webserver in dist folder using localhost and 8080 port
     * replace: Insert in index.html css (styles) and js (vendors, features and core) according to environment
     * coreJs - vendors - featureJs: concat JS files and minify if environment is 'production'
