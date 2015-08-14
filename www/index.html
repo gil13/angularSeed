@@ -14,17 +14,20 @@
 </head>
 
 <body ng-app="seed">
-    
+
+    <div ui-view></div>
 
     <!-- vendorsJs -->
     <!-- build:vendors -->
     <script src="../node_modules/angular/angular.min.js"></script>
     <script src="../node_modules/angular-ui-router/build/angular-ui-router.min.js"></script>
     <script src="../node_modules/restangular/dist/restangular.min.js"></script>
+    <script src="../node_modules/ng-resources/lib/angular-resource.js"></script>
     <script src="../node_modules/underscore/underscore-min.js"></script>
     <!-- endbuild -->
 
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+    <script src="app/main/main.controller.js"></script>
 
     <!-- app's js -->
     <!-- build:core -->
