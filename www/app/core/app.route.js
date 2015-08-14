@@ -5,12 +5,12 @@
         .module('seed', ['ui.router'])
         .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
-            $urlRouterProvider.otherwise('/main');
+            $urlRouterProvider.otherwise('/actors');
 
             $stateProvider
                 .state('/', {
-                    url:'/main',
-                    templateUrl: 'app/main/main.html'
+                    url:'/actors',
+                    templateUrl: 'app/actors/actors.html'
                     // controller: 'HomeController'
                 });
         }]);

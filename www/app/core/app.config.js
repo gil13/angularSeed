@@ -1,9 +1,9 @@
-(function(){
-    'use strict';
-
-    angular
-        .module('seed', [])
-        .config(function() {
-        });
-
-})();
+// (function(){
+//     'use strict';
+//
+//     angular
+//         .module('seed', [])
+//         .config(function() {
+//         });
+//
+// })();
