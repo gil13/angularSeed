@@ -15,16 +15,18 @@
 
 <body ng-app="app">
 
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+    <div ui-view></div>
+
+    <!-- <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs backgroundColor">
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
-            <!-- Title -->
+
                 <span class="mdl-layout-title">Essence Interactive</span>
             </div>
-                <!-- Tabs -->
+
             <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
                 <a href="#fixed-tab-1" class="mdl-layout__tab is-active">Popular</a>
-                <a href="#fixed-tab-2" class="mdl-layout__tab">Top Rated</a>
+                <a href="#fixed-tab-2" class="mdl-layout__tab" ng-click="vm.filterData('popular')">Top Rated</a>
                 <a href="#fixed-tab-3" class="mdl-layout__tab">Fav</a>
             </div>
         </header>
@@ -33,19 +35,6 @@
             <section class="mdl-layout__tab-panel" id="fixed-tab-2"></section>
             <section class="mdl-layout__tab-panel" id="fixed-tab-3"></section>
             <div class="page-content"><div ui-view></div></div>
-        </main>
-    </div>
-
-    <!-- <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <header class="mdl-layout__header">
-            <div class="mdl-layout__header-row">
-                <span class="mdl-layout-title">Title</span>
-                <div class="mdl-layout-spacer"></div>
-            </div>
-        </header>
-        <main class="mdl-layout__content">
-            <div class="page-content"><div ui-view></div>
-            </div>
         </main>
     </div> -->
 
@@ -58,6 +47,9 @@
     <script src="../node_modules/angular-ui-router.statehelper.statehelper.min.js"></script>
     <script src="../node_modules/restangular/dist/restangular.min.js"></script>
     <script src="../node_modules/underscore/underscore-min.js"></script>
+    <script src="../node_modules/angular-translate/dist/angular-translate.min.js"></script>
+    <script src="../node_modules/angular-translate-loader-url/angular-translate-loader-url.min.js"></script>
+    <script src="../node_modules/angular-translate-loader-url/angular-translate-loader-static-files.min.js"></script>
     <!-- endbuild -->
 
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
