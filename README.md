@@ -37,3 +37,7 @@ Updated: 2015-08-13
     * linter: execute eslint
     * build: run ['webserver', 'lint', 'cleanDist', 'coreJs', 'featureJs', 'vendors', 'replace', 'watch']
         - As arguments --> '--env' with 'production' or 'development'
+
+
+
+FIRST LIST RESOURCE FROM http://docs.themoviedb.apiary.io/#reference/tv/tvairingtoday
