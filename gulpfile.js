@@ -21,6 +21,7 @@ var production = environments.production;
 var vendors = [
     'node_modules/angular/angular.min.js',
     'node_modules/angular-ui-router/build/angular-ui-router.min.js',
+    'node_modules/angular-ui-router.statehelper.statehelper.min.js',
     'node_modules/restangular/dist/restangular.min.js',
     'node_modules/underscore/underscore-min.js'
 ];
@@ -47,7 +48,7 @@ gulp.task('replace', ['cleanDist', 'vendors', 'coreJs' ,'featureJs', 'templateHt
         .pipe(production(htmlreplace({
             'css': 'assets/css/main.css',
             'core': 'app/core/core.min.js',
-            'js': 'app/feature/feature.min.js',
+            'js': 'app/series/series.controller.js',
             'vendors': 'js/vendors/vendors.min.js'
         }))))
         .pipe(gulp.dest('dist/'));
@@ -85,11 +86,11 @@ gulp.task('coreJs', ['cleanDist'], function() {
 // Concatenate featureJs
 gulp.task('featureJs', ['cleanDist'], function() {
     return gulp.src(['www/app/**/*.js', '!www/app/core/*.js'])
-        .pipe(production(concat('feature.js')))
-        .pipe(production(rename('feature.min.js')))
-        .pipe(production(uglify()))
+        // .pipe(production(concat('feature.js')))
+        // .pipe(production(rename('feature.min.js')))
+        // .pipe(production(uglify()))
         .pipe(gulp.dest('dist/app'))
-        .pipe(production(gulp.dest('dist/app/feature/')))
+        // .pipe(production(gulp.dest('dist/app/feature/')))
         .pipe(livereload());
 });
 
