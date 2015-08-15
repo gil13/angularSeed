@@ -1,6 +1,8 @@
 .serieListCard {
-    width: 95% !important;
-    margin: 3% !important;
+    width: 45% !important;
+    margin: 2% !important;
+    min-height: 275px !important;
+    float: left;
 }
 
 .mdl-layout__header, .mdl-layout__tab-bar {
@@ -9,9 +11,18 @@
 
 .imgCard{
     width: 100%;
+    float: left;
 }
 
 .mdl-card__menu {
-    right: 8px !important;
-    top: 8px !important;
+    right: 12px !important;
+    top: 43% !important;
+}
+
+.backgroundColor {
+    background: #D2D2D2;
+}
+
+.detailCard {
+    width: 100% !important;
 }
