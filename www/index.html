@@ -13,17 +13,49 @@
 
 </head>
 
-<body ng-app="seed">
+<body ng-app="app">
 
-    <div ui-view>
-
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+            <!-- Title -->
+                <span class="mdl-layout-title">Essence Interactive</span>
+            </div>
+                <!-- Tabs -->
+            <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+                <a href="#fixed-tab-1" class="mdl-layout__tab is-active">Popular</a>
+                <a href="#fixed-tab-2" class="mdl-layout__tab">Top Rated</a>
+                <a href="#fixed-tab-3" class="mdl-layout__tab">Fav</a>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1"></section>
+            <section class="mdl-layout__tab-panel" id="fixed-tab-2"></section>
+            <section class="mdl-layout__tab-panel" id="fixed-tab-3"></section>
+            <div class="page-content"><div ui-view></div></div>
+        </main>
     </div>
 
+    <!-- <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">Title</span>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="page-content"><div ui-view></div>
+            </div>
+        </main>
+    </div> -->
+
+    <!-- <div ng-include src="'app/common/footer.html'"></div> -->
 
     <!-- vendorsJs -->
     <!-- build:vendors -->
     <script src="../node_modules/angular/angular.min.js"></script>
     <script src="../node_modules/angular-ui-router/build/angular-ui-router.min.js"></script>
+    <script src="../node_modules/angular-ui-router.statehelper.statehelper.min.js"></script>
     <script src="../node_modules/restangular/dist/restangular.min.js"></script>
     <script src="../node_modules/underscore/underscore-min.js"></script>
     <!-- endbuild -->
