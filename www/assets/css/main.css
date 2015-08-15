@@ -1,0 +1,17 @@
+.serieListCard {
+    width: 95% !important;
+    margin: 3% !important;
+}
+
+.mdl-layout__header, .mdl-layout__tab-bar {
+    background-color: rgb(65, 66, 72) !important;
+}
+
+.imgCard{
+    width: 100%;
+}
+
+.mdl-card__menu {
+    right: 8px !important;
+    top: 8px !important;
+}
