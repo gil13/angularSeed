@@ -23,6 +23,10 @@ var vendors = [
     'node_modules/angular-ui-router/build/angular-ui-router.min.js',
     'node_modules/angular-ui-router.statehelper.statehelper.min.js',
     'node_modules/restangular/dist/restangular.min.js',
+    'node_modules/angular-translate/dist/angular-translate.min.js',
+    'node_modules/angular-translate-loader-url/angular-translate-loader-url.min.js',
+    'node_modules/angular-translate-loader-url/angular-translate-loader-static-files.min.js',
+    'node_modules/fastclick/fastclick.min.js',
     'node_modules/underscore/underscore-min.js'
 ];
 
@@ -86,11 +90,13 @@ gulp.task('coreJs', ['cleanDist'], function() {
 // Concatenate featureJs
 gulp.task('featureJs', ['cleanDist'], function() {
     return gulp.src(['www/app/**/*.js', '!www/app/core/*.js'])
-        // .pipe(production(concat('feature.js')))
-        // .pipe(production(rename('feature.min.js')))
-        // .pipe(production(uglify()))
         .pipe(gulp.dest('dist/app'))
-        // .pipe(production(gulp.dest('dist/app/feature/')))
+        .pipe(livereload());
+});
+
+gulp.task('translation', ['cleanDist'], function() {
+    return gulp.src('www/app/common/**/*.json')
+        .pipe(gulp.dest('dist/app/common'))
         .pipe(livereload());
 });
 
@@ -125,4 +131,4 @@ gulp.task('lint', function () {
 // Task
 gulp.task('linter', ['lint']);
 gulp.task('serve', ['webserver']);
-gulp.task('build', ['webserver', 'cleanDist', 'css', 'vendors', 'coreJs', 'featureJs', 'templateHtml', 'replace']);
+gulp.task('build', ['webserver', 'cleanDist', 'css', 'vendors', 'coreJs', 'featureJs', 'translation', 'templateHtml', 'replace']);
