@@ -13,13 +13,14 @@
                 imageSize = [],
                 imageUrl,
                 endpoint,
-                page = 0;
+                page = 1;
 
             var service = {
                 getSeriesList: getSeriesList,
                 getSerieDetail: getSerieDetail,
                 getSerieImage: getSerieImage,
-                getConfig: getConfig
+                getConfig: getConfig,
+                getSeasons: getSeasons
             };
 
             return service;
@@ -36,7 +37,7 @@
             function getSeriesList(type) {
                 endpoint = type || 'popular';
 
-                var url = baseUrl + endpoint + '?page=' + ++page + '&api_key=' + apiKey;
+                var url = baseUrl + endpoint + '?page=' + page + '&api_key=' + apiKey;
                 return $http.get(url);
             }
 
@@ -48,6 +49,12 @@
             function getSerieImage(image) {
                 var url = imageUrl + imageSize[1] + image + '?api_key=' + apiKey;
                 return url;
+            }
+
+            function getSeasons(id,season) {
+                // http://api.themoviedb.org/3/tv/id/season/season_number
+                var url = baseUrl + id + '/season/' + season + '?api_key=' + apiKey;
+                return $http.get(url);
             }
             //     return $http.get(urlBase + '/' + id);
             // };
