@@ -12,6 +12,8 @@ var sass = require('gulp-sass'),
     htmlreplace = require('gulp-html-replace'),
     environments = require('gulp-environments'),
     del = require('del'),
+    s3 = require('gulp-s3'),
+    yuidoc = require('gulp-yuidoc'),
     friendlyFormatter = require('eslint-friendly-formatter');
 
 //Set environments
@@ -27,6 +29,7 @@ var vendors = [
     'node_modules/angular-translate-loader-url/angular-translate-loader-url.min.js',
     'node_modules/angular-translate-loader-url/angular-translate-loader-static-files.min.js',
     'node_modules/fastclick/fastclick.min.js',
+    'node_modules/angular-swipe/angular-swipe.min.js',
     'node_modules/underscore/underscore-min.js'
 ];
 
@@ -128,7 +131,29 @@ gulp.task('lint', function () {
         .pipe(eslint.failOnError());
 });
 
+// Deploy to S3
+gulp.task('deployS3', function() {
+    aws = JSON.parse(fs.readFileSync('aws.json'));
+    gulp.src('dist/**')
+        .pipe(s3(aws));
+});
+
+gulp.task('jsDoc', function() {
+    return gulp.src('www/app/**/*.js')
+        .pipe(yuidoc({
+            project: {
+                'name': 'Essence Interactive',
+                'description': 'Essence Interactive',
+                'version': '1.0.0',
+                'url': 'http://example.com/'
+            }
+        }))
+        .pipe(gulp.dest('doc'));
+});
+
 // Task
 gulp.task('linter', ['lint']);
 gulp.task('serve', ['webserver']);
+gulp.task('deploy', ['deployS3']);
+gulp.task('doc', ['jsDoc']);
 gulp.task('build', ['webserver', 'cleanDist', 'css', 'vendors', 'coreJs', 'featureJs', 'translation', 'templateHtml', 'replace']);
