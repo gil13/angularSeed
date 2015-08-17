@@ -1,1 +1,45 @@
-<h3>Chapter</h3>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs backgroundColor">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+        <!-- Title -->
+            <span class="mdl-layout-title">Essence Interactive</span>
+        </div>
+    </header>
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <div ui-view>
+
+                <div class="mdl-card mdl-shadow--2dp demo-card-wide detailCard">
+                    <div>
+                        <img src="{{vm.episodeDetail.detail.img}}" class="imgDetail"/>
+                    </div>
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">{{vm.episodeDetail.main.name}}</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">{{vm.serieDetail.detail.overview}}</div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <div ng-repeat="season in vm.serieDetail.seasons">
+                            <div class="mdl-card__supporting-text">{{season.name}}</div>
+                            <table class="mdl-data-table mdl-js-data-table mdl- mdl-shadow--2dp full-width">
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric full-width">Name</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="episode in season.episodes" ng-click="vm.goToChapter(episode)">
+                                        <td class="mdl-data-table__cell--non-numeric">{{episode.name}}</td>
+                                        <td>{{episode.air_date | date:'dd-MM-yyyy'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </main>
+</div>
