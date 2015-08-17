@@ -1,3 +1,12 @@
+/**
+ * translate - Service used to set translation system
+ *
+ * @module app.translate
+ * @class translate
+ * @requires pascalprecht.translate
+ * @param $translateProvider
+ */
+
 (function(){
     'use strict';
 

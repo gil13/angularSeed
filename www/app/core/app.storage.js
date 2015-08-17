@@ -1,3 +1,11 @@
+/**
+ * storageService - Service used to store in localStorage/sessionStorage
+ *
+ * @module app.storage
+ * @class storageService
+ * @param $window Context to call native methods
+ */
+
 (function(){
     'use strict';
 
@@ -18,6 +26,14 @@
 
             return service;
 
+            /**
+             * Use localStorage/sessionStorage to store data
+             *
+             * @method setData
+             * @requires type, key, value
+             * @return context
+            */
+
             function setData(type, key, value) {
                 if(type === 'localStorage' && ls) {
                     $window.localStorage.setItem(key, JSON.stringify(value));
@@ -27,6 +43,14 @@
                 return this;
 
             }
+
+            /**
+             * Retrieve from localStorage/sessionStorage data with key
+             *
+             * @method getData
+             * @requires type, key, value
+             * @return object
+            */
 
             function getData(type, key) {
                 if(type === 'localStorage' && ls) {

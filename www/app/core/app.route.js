@@ -1,3 +1,13 @@
+/**
+ * Main router module
+ *
+ * @module app
+ * @class router
+ * @requires ui.router, app.series
+ * @param $stateProvider
+ * @param $urlRouterProvider
+ */
+
 (function(){
     'use strict';
 
@@ -21,12 +31,13 @@
                     url:'/detail',
                     templateUrl: 'app/series/detail.html',
                     controller: 'DetailCrtl',
-                    // controllerAs: 'vm'
+                    controllerAs: 'vm'
                 })
                 .state('chapter', {
                     url:'/chapter',
-                    templateUrl: 'app/series/chapter.html'
-                    // controller: 'HomeController'
+                    templateUrl: 'app/series/chapter.html',
+                    controller: 'ChapterCrtl',
+                    controllerAs: 'vm'
                 });
         }
 })();
