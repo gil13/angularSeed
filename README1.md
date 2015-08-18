@@ -1,6 +1,6 @@
-# AngularJs - Seed
+# AngularJs - TV series
 
-Updated: 2015-08-13
+Updated: 2015-08-18
 
 **Please read the CHANGELOG.md file.**
 
@@ -8,6 +8,7 @@ Updated: 2015-08-13
 
   * [gulpfile.js](#gulpfile-structure)
   * [package.json] (#npm-dependencies)
+  * 
 
 ## Gulpfile structure
 
