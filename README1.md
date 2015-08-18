@@ -89,13 +89,15 @@ Updated: 2015-08-18
         ** Fastclick lib
         
     *  app.resources.js: Store and register web service request
-        ** getSeriesList:  Retrieve TV series list from server
-        ** getSerieDetail: Retrieve TV serie detail from server
-        ** getSerieImage: Retrieve TV serie image from server
-        ** getConfig: Retrieve config detail from server and store it
-        ** getSeasons: Retrieve TV serie seasons from server
-        ** getEpisodeDetail: Retrieve episode details from server
-        ** getEpisodeCast: Retrieve TV serie casting details from server
+        ** getSeriesList():  Retrieve TV series list from server
+        ** getSerieDetail(): Retrieve TV serie detail from server
+        ** getSerieImage(): Retrieve TV serie image from server
+        ** getConfig(): Retrieve config detail from server and store it
+        ** getSeasons(): Retrieve TV serie seasons from server
+        ** getEpisodeDetail(): Retrieve episode details from server
+        ** getEpisodeCast(): Retrieve TV serie casting details from server
+        ** _checkConexion(): Check if browser is connected
+        ** _setImageData(): Set image paths
         
     * app.route.js: Main router file
         url:'/series'
@@ -110,10 +112,10 @@ Updated: 2015-08-18
         templateUrl: 'app/series/chapter.html'
         controller: 'ChapterCrtl'
         
-    * app.storage.js: Servie to store and retrieve data from localStorage and sessionStorage
-        ** getData() 
-        ** setData()
-        ** checkData()
+    * app.storage.js: Servie to store and retrieve data
+        ** getData(): get data from localStorage/sessionStorage
+        ** setData(): set data to localStorage/sessionStorage
+        ** checkData(): check data for cached service request
         
     * app.translate.app: Allow to use translation service in template
     
