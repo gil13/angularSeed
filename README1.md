@@ -9,6 +9,8 @@ Updated: 2015-08-18
   * [gulpfile.js](#gulpfile-structure)
   * [package.json] (#npm-dependencies)
   * Core (#app-core)
+  * Common (#app-common)
+  * API (#api)
 
 ## Gulpfile structure
 
@@ -96,7 +98,6 @@ Updated: 2015-08-18
         ** getEpisodeCast: Retrieve TV serie casting details from server
         
     * app.route.js: Main router file
-
         url:'/series'
         templateUrl: 'app/series/series.html'
         controller: 'SeriesCrtl'
@@ -108,8 +109,23 @@ Updated: 2015-08-18
         url:'/chapter'
         templateUrl: 'app/series/chapter.html'
         controller: 'ChapterCrtl'
+        
+    * app.storage.js: Servie to store and retrieve data from localStorage and sessionStorage
+        ** getData() 
+        ** setData()
+        
+    * app.translate.app: Allow to use translation service in template
+    
+## App Commomn
 
-      
+    * Common templates as headers, footers, menus etc
+    * Tranlastion JSON files with app strings
+    
+## API
 
-
-FIRST LIST RESOURCE FROM http://docs.themoviedb.apiary.io/#reference/tv/tvairingtoday
+    * API webservice provided by 'themoviedb'
+        ** Requisites
+        
+        ** You need a 'key' to use this API, you should be a registrer user to use
+        ** To get images url is mandatory to call 'config' service to retrieve a customized path (you need to concat paths)
+        ** Live online documentation http://docs.themoviedb.apiary.io/
