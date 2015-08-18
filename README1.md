@@ -116,7 +116,7 @@ Updated: 2015-08-18
         
     * app.translate.app: Allow to use translation service in template
     
-## App Commomn
+## App Common
 
     * Common templates as headers, footers, menus etc
     * Tranlastion JSON files with app strings
