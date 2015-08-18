@@ -6,7 +6,8 @@ Updated: 2015-08-13
 
 ## Overview
 
-  * [Gulpfile.js](#estructura-de-gulp)
+  * [gulpfile.js](#gulpfile-structure)
+  * [package.json] (#npm-dependencies)
 
 ## Gulpfile structure
 
@@ -20,23 +21,64 @@ Updated: 2015-08-13
     * htmlreplace: Replace css and js in html files
     * environments: Used to pass environments as arguments
     * del: Allow clean/remove files and folders
+    * gulp-s3: Allows you to deploy your build data to Amazon S3
+    * yuidoc: Generates auto documentacion
     * friendlyFormatter: Give a friendly output for eslint report
 
     * Tasks
 
     * webserver: Set up a webserver in dist folder using localhost and 8080 port
+    * templateHtml: copy all html templates to ist folder
     * replace: Insert in index.html css (styles) and js (vendors, features and core) according to environment
     * coreJs - vendors - featureJs: concat JS files and minify if environment is 'production'
+    * translation: copy all JSON files with translations to build folder
     * cleandist: clean 'dist' folder before each compilation
     * watch: wait expecting any code changes to rerun a task
     * lint: execute 'eslint' test in all .js files
+    * deployS3: Using a S3 config file upload it to the platform
+    * jsDoc: Using Yuidoc and code comments generates documentacion
 
     * Gulp params
 
-    * serve: just setup webserver
-    * linter: execute eslint
+    * serve: just setup 'webserver'
+    * linter: execute 'eslint'
+    * deploy: execute 'deployS3'
+    * deploy: execute 'jsDoc'
     * build: run ['webserver', 'lint', 'cleanDist', 'coreJs', 'featureJs', 'vendors', 'replace', 'watch']
         - As arguments --> '--env' with 'production' or 'development'
+        
+ ## NPM Dependencies
+ 
+    * angular: angularJs core
+    * angular-translate: module which allows to use template translations
+    * angular-translate-loader-static-files: module which allows to use JSON file as translation source
+    * angular-translate-loader-url: module which allows to use url as translation file
+    * angular-ui-router: alternative router for angular
+    * angular-ui-router-stathelper: allow to use partials and nested routes easily
+    * bower: package manager use for some libs
+    * del: allows you to delete folder/files in gulp
+    * eslint-friendly-formatter": eslint terminal report formatter
+    * eslint-html-reporter": javascript code quality and syntax error detection
+    * gulp: task automation
+    * gulp-concat: gulp-module to concant/join files
+    * gulp-connect: gulp-module to set up webserver
+    * gulp-duration: gulp-module to get execution timing
+    * gulp-environments: gulp-module whicj allows use environment as params
+    * gulp-eslint: gulp-module to allow eslint task
+    * gulp-html-replace: gulp-module for replace code lines in html
+    * gulp-jasmine: gulp-module for jasmin unit testing
+    * gulp-karma: gulp-module for karma
+    * gulp-karma-runner: gulp-module for karma taks in real browser
+    * gulp-livereload: gulp-module for browser livereload
+    * gulp-rename: gulp-module for renaming files/folders
+    * gulp-s3: gulp-module for deploying to amazon s3
+    * gulp-sass: gulp-module to process sass files
+    * gulp-uglify: gulp-module for minification task in files
+    * gulp-yuidoc: Automatic doc generator
+    * jasmine-reporters: Create a jasmine report for unit-testing
+    * karma: test runner
+    * restangular: alternative for server request in angular
+    * underscore: Javascript library
 
 
 
