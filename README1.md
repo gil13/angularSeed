@@ -116,6 +116,9 @@ Updated: 2015-08-18
         ** getData(): get data from localStorage/sessionStorage
         ** setData(): set data to localStorage/sessionStorage
         ** checkData(): check data for cached service request
+        ** _generateTimestamp(): generate custom timeStamp
+        ** _checkTimeStamp(): check timestamp with actual date
+        ** _removeKey(): remove item
         
     * app.translate.app: Allow to use translation service in template
     
