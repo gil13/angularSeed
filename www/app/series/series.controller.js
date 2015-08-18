@@ -43,7 +43,7 @@
 
             function getSeriesList(type) {
                 resourceService.getConfig()
-                    .success(function(){
+                    .then(function(){
                         resourceService.getSeriesList(type)
                             .success(function(data){
                                 for(var i = 0; i < data.results.length; i++){
@@ -113,12 +113,15 @@
                         vm.serieDetail.detail = data;
                         resourceService.getSeasons(detailData.id, 0)
                             .success(function(response){
+                                if(response.episodes.length === 0){
+                                    vm.serieDetail.error = 'There are not episodes for this season.';
+                                }
                                 vm.seasonData = true;
                                 vm.serieDetail.seasons = response;
                             })
-                            .error(function(response){
+                            .error(function(){
                                 vm.seasonData = false;
-                                vm.serieDetail.error = 'Cannot retrieve Season data from server.';
+                                vm.serieDetail.error = 'Cannot retrieve any season from this TV serie.';
                             });
                     });
             }
