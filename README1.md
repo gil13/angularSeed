@@ -8,7 +8,7 @@ Updated: 2015-08-18
 
   * [gulpfile.js](#gulpfile-structure)
   * [package.json] (#npm-dependencies)
-  * 
+  * Core (#app-core)
 
 ## Gulpfile structure
 
@@ -80,7 +80,10 @@ Updated: 2015-08-18
     * karma: test runner
     * restangular: alternative for server request in angular
     * underscore: Javascript library
+    
+## APP CORE
 
+    * app.config: 
 
 
 FIRST LIST RESOURCE FROM http://docs.themoviedb.apiary.io/#reference/tv/tvairingtoday
