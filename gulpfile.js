@@ -154,6 +154,6 @@ gulp.task('jsDoc', function() {
 // Task
 gulp.task('linter', ['lint']);
 gulp.task('serve', ['webserver']);
-gulp.task('deploy', ['deployS3']);
 gulp.task('doc', ['jsDoc']);
-gulp.task('build', ['webserver', 'cleanDist', 'css', 'vendors', 'coreJs', 'featureJs', 'translation', 'templateHtml', 'replace']);
+gulp.task('build', ['lint','webserver', 'cleanDist', 'css', 'vendors', 'coreJs', 'featureJs', 'translation', 'templateHtml', 'replace']);
+gulp.task('deploy', ['lint', 'cleanDist', 'css', 'vendors', 'coreJs', 'featureJs', 'translation', 'templateHtml', 'replace', 'deployS3']);
