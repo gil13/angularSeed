@@ -8,9 +8,9 @@ Updated: 2015-08-18
 
   * [gulpfile.js](#gulpfile-structure)
   * [package.json] (#npm-dependencies)
-  * Core (#app-core)
-  * Common (#app-common)
-  * API (#api)
+  * [Core] (#app-core)
+  * [Common] (#app-common)
+  * [API] (#api)
 
 ## Gulpfile structure
 
@@ -113,6 +113,7 @@ Updated: 2015-08-18
     * app.storage.js: Servie to store and retrieve data from localStorage and sessionStorage
         ** getData() 
         ** setData()
+        ** checkData()
         
     * app.translate.app: Allow to use translation service in template
     
