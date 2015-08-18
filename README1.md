@@ -47,7 +47,7 @@ Updated: 2015-08-13
     * build: run ['webserver', 'lint', 'cleanDist', 'coreJs', 'featureJs', 'vendors', 'replace', 'watch']
         - As arguments --> '--env' with 'production' or 'development'
         
- ## NPM Dependencies
+## NPM Dependencies
  
     * angular: angularJs core
     * angular-translate: module which allows to use template translations
