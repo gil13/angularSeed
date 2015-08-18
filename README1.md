@@ -81,9 +81,35 @@ Updated: 2015-08-18
     * restangular: alternative for server request in angular
     * underscore: Javascript library
     
-## APP CORE
+## App CORE
 
-    * app.config: 
+    * app.config.js: Initialize resources on init
+        ** Fastclick lib
+        
+    *  app.resources.js: Store and register web service request
+        ** getSeriesList:  Retrieve TV series list from server
+        ** getSerieDetail: Retrieve TV serie detail from server
+        ** getSerieImage: Retrieve TV serie image from server
+        ** getConfig: Retrieve config detail from server and store it
+        ** getSeasons: Retrieve TV serie seasons from server
+        ** getEpisodeDetail: Retrieve episode details from server
+        ** getEpisodeCast: Retrieve TV serie casting details from server
+        
+    * app.route.js: Main router file
+
+        url:'/series'
+        templateUrl: 'app/series/series.html'
+        controller: 'SeriesCrtl'
+
+        url:'/detail'
+        templateUrl: 'app/series/detail.html'
+        controller: 'DetailCrtl'
+
+        url:'/chapter'
+        templateUrl: 'app/series/chapter.html'
+        controller: 'ChapterCrtl'
+
+      
 
 
 FIRST LIST RESOURCE FROM http://docs.themoviedb.apiary.io/#reference/tv/tvairingtoday
