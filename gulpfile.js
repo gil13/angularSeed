@@ -34,7 +34,8 @@ var vendors = [
 ];
 
 var css = [
-    'www/assets/css/main.css'
+    'www/assets/css/main.css',
+    'devices.min.css'
 ];
 
 // Webserver
@@ -60,6 +61,13 @@ gulp.task('replace', ['cleanDist', 'vendors', 'coreJs' ,'featureJs', 'templateHt
         }))))
         .pipe(gulp.dest('dist/'));
 });
+
+// Copy landing templates
+gulp.task('manifest', ['cleanDist'], function() {
+    gulp.src('home.html')
+        .pipe(gulp.dest('dist'));
+});
+
 
 // Copy HTML templates
 gulp.task('templateHtml', ['cleanDist'], function() {
@@ -148,12 +156,12 @@ gulp.task('jsDoc', function() {
                 'url': 'http://example.com/'
             }
         }))
-        .pipe(gulp.dest('doc'));
+        .pipe(gulp.dest('dist/doc'));
 });
 
 // Task
 gulp.task('linter', ['lint']);
 gulp.task('serve', ['webserver']);
 gulp.task('doc', ['jsDoc']);
-gulp.task('build', ['lint','webserver', 'cleanDist', 'css', 'vendors', 'coreJs', 'featureJs', 'translation', 'templateHtml', 'replace']);
-gulp.task('deploy', ['lint', 'cleanDist', 'css', 'vendors', 'coreJs', 'featureJs', 'translation', 'templateHtml', 'replace', 'deployS3']);
+gulp.task('build', ['lint','webserver', 'cleanDist', 'manifest', 'css', 'vendors', 'coreJs', 'featureJs', 'translation', 'templateHtml', 'replace']);
+gulp.task('deploy', ['lint', 'cleanDist', 'css', 'manifest', 'vendors', 'coreJs', 'featureJs', 'translation', 'templateHtml', 'replace', 'deployS3']);
