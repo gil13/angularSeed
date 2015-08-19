@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Essence - Alberto Gil</title>
+        <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.indigo-pink.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link href="assets/css/devices.min.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <div style="text-align: center; padding-top: 4%;">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="i5" style="padding: 0 5%;" onclick="switchDevice(320, 568, id)">Iphone 5</button>
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="i6" style="padding: 0 5%;" onclick="switchDevice(375, 667, id)">Iphone 6</button>
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="n5" style="padding: 0 5%;" onclick="switchDevice(360, 640, id)">Nexus 5</button>
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="n6" style="padding: 0 5%;" onclick="switchDevice(412, 732, id)">Nexus 6</button>
+        </div>
+
+        <div style="text-align: center; width: 100%; margin: 0 auto;">
+            <div class="marvel-device iphone5s" id="cover" style="margin-top: 5%;">
+                <div class="top-bar"></div>
+                <div class="sleep"></div>
+                <div class="camera"></div>
+                <div class="sensor"></div>
+                <div class="speaker"></div>
+                <div class="screen">
+                    <iframe id="mobile" src="https://blazing-heat-7894.firebaseapp.com/#/series" style="width: 320px;height: 568px; margin: 0 auto;
+            display: block;"></iframe>
+                </div>
+                <div class="home"></div>
+            </div>
+        </div>
+
+        <footer class="mdl-mini-footer" style="margin-top: 3%;">
+            <div class="mdl-mini-footer__left-section">
+                <ul class="mdl-mini-footer__link-list">
+                    <li><a href="#">Alberto Gil - Essence Interactive</a></li>
+                </ul>
+            </div>
+        </footer>
+
+        <script type="text/javascript">
+            function switchDevice(width, height, id){
+                document.getElementById('mobile').style.width = width + 'px';
+                document.getElementById('mobile').style.height = height + 'px';
+
+                document.getElementsByTagName('button')[0].removeAttribute("disabled");
+                document.getElementsByTagName('button')[1].removeAttribute("disabled");
+                document.getElementsByTagName('button')[2].removeAttribute("disabled");
+                document.getElementsByTagName('button')[3].removeAttribute("disabled");
+
+                document.getElementById(id).setAttribute("disabled",'');
+
+                switch (id) {
+                    case 'i5':
+                        document.getElementById('cover').className = 'marvel-device iphone5s';
+                        break;
+                    case 'i6':
+                        document.getElementById('cover').className = 'marvel-device iphone6 silver';
+                        break;
+                    case 'n5':
+                        document.getElementById('cover').className = 'marvel-device nexus5';
+                        break;
+                    case 'n6':
+                        document.getElementById('cover').className = 'marvel-device s5 white';
+                        break;
+                }
+
+                document.getElementById('mobile').contentDocument.location.reload(true);
+            }
+        </script>
+
+        <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+    </body>
+</html>
