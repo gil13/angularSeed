@@ -1,7 +1,7 @@
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs backgroundColor">
     <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
-        <!-- Title -->
+        <!-- Title ng-class="{'new-row': vm.startNewRow($index, vm.columnBreak) }" -->
             <span class="mdl-layout-title">Essence Interactive</span>
         </div>
             <!-- Tabs -->
@@ -11,21 +11,19 @@
             <a href="#fixed-tab-3" class="mdl-layout__tab">Fav</a>
         </div>
     </header>
-    <main class="mdl-layout__content">
+    <main id="content_container" class="mdl-layout__content" style="margin: 1%;">
         <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1"></section>
         <section class="mdl-layout__tab-panel" id="fixed-tab-2"></section>
         <section class="mdl-layout__tab-panel" id="fixed-tab-3"></section>
         <div class="page-content">
             <div ui-view>
-
                 <div class="listContainer">
-                    <div class="mdl-card mdl-shadow--2dp demo-card-wide serieListCard label" ng-repeat="item in vm.seriesList" ng-class="{'new-row': vm.startNewRow($index, vm.columnBreak) }">
+                    <div id="lstImg" class="mdl-shadow--2dp serieListCard label" style="{{vm.margin}}" ng-repeat="item in vm.seriesList">
                         <div ng-click="vm.goToDetail(item)">
                             <img src="{{item.poster}}" class="imgCard"/>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </main>

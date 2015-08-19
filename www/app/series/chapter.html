@@ -14,31 +14,16 @@
                         <img src="{{vm.episodeDetail.detail.img}}" class="imgDetail"/>
                     </div>
                     <div class="mdl-card__title">
-                        <h2 class="mdl-card__title-text">{{vm.episodeDetail.main.name}}</h2>
+                        <h2 class="mdl-card__title-text">(E{{vm.episodeDetail.episode.episode_number}}S{{vm.episodeDetail.episode.season_number}}) - {{vm.episodeDetail.main.name}}</h2>
                     </div>
-                    <div class="mdl-card__supporting-text">{{vm.serieDetail.detail.overview}}</div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <div ng-repeat="season in vm.serieDetail.seasons">
-                            <div class="mdl-card__supporting-text">{{season.name}}</div>
-                            <table class="mdl-data-table mdl-js-data-table mdl- mdl-shadow--2dp full-width">
-                                <thead>
-                                    <tr>
-                                        <th class="mdl-data-table__cell--non-numeric full-width">Name</th>
-                                        <th>Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="episode in season.episodes" ng-click="vm.goToChapter(episode)">
-                                        <td class="mdl-data-table__cell--non-numeric">{{episode.name}}</td>
-                                        <td>{{episode.air_date | date:'dd-MM-yyyy'}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+
+                    <div class="mdl-card__supporting-text sub" ng-show="vm.episodeDetail.episode.air_date"><strong>On air from:</strong> {{vm.episodeDetail.episode.air_date | date:'dd-MM-yyyy'}}</div>
+                    <div class="mdl-card__supporting-text sub" ng-show="vm.episodeDetail.episode.vote_average"><strong>Rating:</strong> {{vm.episodeDetail.episode.vote_average}}/10 from {{vm.episodeDetail.episode.vote_count + 1}} users</div>
+                    <div class="mdl-card__supporting-text sub" ng-show="vm.episodeDetail.episode.director"><strong>Direction:</strong> {{vm.episodeDetail.episode.director}}</div>
+                    <div class="mdl-card__supporting-text sub" ng-show="vm.episodeDetail.cast"><strong>Stars:</strong> <span ng-repeat="star in vm.episodeDetail.cast">{{star}}, </span></div>
+
+                    <div class="mdl-card__supporting-text" ng-show="vm.episodeDetail.episode.overview"><strong>Overview: </strong>{{vm.episodeDetail.episode.overview}}</div>
                 </div>
-
-
             </div>
         </div>
     </main>

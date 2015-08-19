@@ -22,7 +22,7 @@
                             <div class="mdl-card__supporting-text season-swipe" ng-swipe-left="vm.swipeSeason(vm.serieDetail.seasons.season_number, 'next')"
                                 ng-swipe-right="vm.swipeSeason(vm.serieDetail.seasons.season_number, 'back')">
                                     <i class="material-icons" style="float: left;" ng-show="vm.showLeftArrow" ng-click="vm.swipeSeason(vm.serieDetail.seasons.season_number, 'back')">chevron_left</i>
-                                    {{vm.serieDetail.seasons.name}}
+                                    <div style="TEXT-ALIGN: CENTER;">{{vm.serieDetail.seasons.name}}</div>
                                     <i class="material-icons" style="float: right;" ng-show="vm.showRightArrow" ng-click="vm.swipeSeason(vm.serieDetail.seasons.season_number, 'next')">chevron_right</i>
                             </div>
                             <div>
@@ -36,7 +36,7 @@
                                         </thead>
                                         <tbody>
                                             <tr ng-repeat="episode in vm.serieDetail.seasons.episodes" ng-click="vm.goToChapter(episode)">
-                                                <td class="mdl-data-table__cell--non-numeric">{{episode.name  | limitTo : 30}}</td>
+                                                <td class="mdl-data-table__cell--non-numeric">{{episode.name  | limitTo : 24}}</td>
                                                 <td>{{episode.air_date | date:'dd-MM-yyyy'}}</td>
                                             </tr>
                                         </tbody>
