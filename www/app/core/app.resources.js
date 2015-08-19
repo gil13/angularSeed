@@ -3,7 +3,9 @@
  *
  * @module app.resource
  * @class resourceService
- * @param $http Service to call services
+ * @param $https Service to call services
+ * @param $q Promise
+ * @param storageService Factory
  */
 
 (function() {
@@ -17,7 +19,7 @@
 
         function resourceService($http, $q, storageService) {
             var apiKey = '4650cae2b5b7a63743b629fdc63af7da',
-                baseUrl = 'http://api.themoviedb.org/3/tv/',
+                baseUrl = 'https://api.themoviedb.org/3/tv/',
                 def = $q.defer(),
                 result,
                 posterSize = [],
@@ -46,7 +48,7 @@
             */
 
             function getConfig(){
-                var url =  'http://api.themoviedb.org/3/configuration' + '?api_key=' + apiKey;
+                var url =  'https://api.themoviedb.org/3/configuration' + '?api_key=' + apiKey;
 
                 if (storageService.checkData(btoa(url))) {
                     result = storageService.getData('cache', url);
@@ -109,7 +111,7 @@
 
             function getSerieImage(image, type) {
                 if(type === 'poster'){
-                    img = posterSize[2];
+                    img = posterSize[1];
                 } else if (type === 'cover'){
                     img = coverSize[1];
                 }
@@ -172,7 +174,7 @@
             */
 
             function _setImageData(data){
-                imageUrl = data.images.base_url;
+                imageUrl = data.images.secure_base_url;
                 posterSize = data.images.poster_sizes;
                 coverSize = data.images.backdrop_sizes;
             }
