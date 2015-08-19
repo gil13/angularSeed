@@ -25,14 +25,16 @@
         function SeriesCrtl($state, storageService, resourceService) {
             var vm = this;
             vm.seriesList = [];
-            vm.columnBreak = 2;
-            vm.startNewRow = function (index, count) {return ((index) % count) === 0;};
+            vm.margin = null;
+
+
 
             vm.goToDetail = goToDetail;
             vm.getSeriesList = getSeriesList;
             vm.filterData = filterData;
 
             getSeriesList();
+            _setStyles();
 
             /**
              * Set model: retrieve data from service and set TV series list as model
@@ -78,6 +80,52 @@
 
             function filterData(type) {
                 getSeriesList(type);
+            }
+
+            /**
+             * Margin moviles - Private
+             *
+             * @method _setStyles
+            */
+
+            function _setStyles(){
+                var width = window.innerWidth;
+
+                switch (true) {
+                    case (width >= 318 && width <= 335 ):
+                        vm.margin = 'margin: 0.8%;';
+                        break;
+                    case (width > 335 && width <= 365 ):
+                        vm.margin = 'margin: 2%;';
+                        break;
+                    case (width > 365 && width <= 380 ):
+                        vm.margin = 'margin: 4%;';
+                        break;
+                    case (width > 380 && width <= 400 ):
+                        vm.margin = 'margin: 5%;';
+                        break;
+                    case (width > 400 && width <= 430 ):
+                        vm.margin = 'margin: 6%;';
+                        break;
+                    case (width > 430 && width <= 453 ):
+                        vm.margin = 'margin: 7%;';
+                        break;
+                    case (width > 453 && width <= 480 ):
+                        vm.margin = 'margin: 8%;';
+                        break;
+                    case (width > 480 && width <= 510 ):
+                        vm.margin = 'margin: 9%;';
+                        break;
+                    case (width > 510 && width <= 525 ):
+                        vm.margin = 'margin: 10%;';
+                        break;
+
+                    case (width > 525 && width <= 450 ):
+                        vm.margin = 'margin: 0%;';
+                        break;
+                }
+
+
             }
         }
 
@@ -212,24 +260,24 @@
                 vm.episodeDetail.detail = detailData;
                 vm.episodeDetail.cast = [];
 
-                resourceService.getEpisodeCast(detailData.id)
-                    .success(function(data){
-                        for(var i = 0; i < data.cast.length; i++) {
-                            vm.episodeDetail.cast[i] = data.cast[i].name;
+                resourceService.getEpisodeDetail(detailData.id, episodeData.season_number, episodeData.episode_number)
+                    .success(function(response){
+                        vm.episodeDetail.episode = response;
+                        for(var i = 0; i < response.crew.length; i++) {
+                            if(response.crew[i].job === 'Director'){
+                                vm.episodeDetail.episode.director = response.crew[i].name;
+                            }
                         }
-                        // vm.serieDetail.seasons = [];
-                        // vm.serieDetail.detail = data;
-                        // for(var i = 0; i < data.seasons.length; i++) {
-                        //     resourceService.getSeasons(data.id, i)
-                        //         .success(function(response){
-                        //             if(response.season_number !== 0) {
-                        //                 vm.serieDetail.seasons.push(response);
-                        //             }
-                        //         });
-                        // }
+
+                        resourceService.getEpisodeCast(detailData.id)
+                            .success(function(data){
+                                for(var j = 0; j < data.cast.length; j++) {
+                                    vm.episodeDetail.cast[j] = data.cast[j].name;
+                                }
+                            });
                     });
 
-                console.log(vm.episodeDetail);
+                storageService.setData('localStorage', 'episodeData', vm.episodeDetail);
             }
         }
 })();
