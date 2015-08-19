@@ -50,7 +50,7 @@
                         $window.sessionStorage.setItem(key, JSON.stringify(value));
                     }
                 } else if (type === 'cache' && ss){
-                    value.timestamp = _generateTimestamp(1);
+                    value.timestamp = _generateTimestamp(30);
                     $window.sessionStorage.setItem(btoa(key), btoa(JSON.stringify(value)));
                 }
                 return this;
