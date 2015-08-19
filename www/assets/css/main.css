@@ -1,27 +1,21 @@
-.serieListCard {
-    width: 180px !important
-}
+/*** Main ***/
 
-.imgDetail {
-    width: 100%;
+/*Header control*/
+.mdl-layout__tab-bar {
+    height: 48px !important;
 }
 
 .mdl-layout__header, .mdl-layout__tab-bar {
     background-color: rgb(65, 66, 72) !important;
 }
 
-.mdl-card__menu {
-    right: 12px !important;
-    top: 43% !important;
-}
-
-.mdl-card__supporting-text {
-    text-align: justify;
-}
-
+/*Background*/
 .backgroundColor {
     background: #D2D2D2;
 }
+
+
+/*** Series list ***/
 
 .detailCard {
     width: 100% !important;
@@ -33,13 +27,22 @@
 
 .label {
     float: left;
-    margin: 1%;
+    margin: 2%;
     text-align: left;
 }
-.new-row {
-    clear: left;
+
+.imgCard {
+    max-height: 220px !important;
+    max-width: 150px !important;
 }
 
+.imgDetail {
+    width: 100%;
+}
+
+/*** Detail ***/
+
+/*Swipe div block*/
 .season-swipe {
     line-height: 0px !important;
     text-align: center;
@@ -51,6 +54,16 @@
     user-select: none;
 }
 
-.mdl-layout__tab-bar {
-    height: 48px !important;
-}    
+/*Align description*/
+.mdl-card__supporting-text {
+    text-align: justify;
+}
+
+
+/*** Chapter ***/
+
+/*Overwrite subheader*/
+.sub {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
